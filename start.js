@@ -23,18 +23,40 @@ function addBlock(e) {
 
     const trackText = document.createElement("input");
     trackText.type = "text";    
+    trackText.classList.add("trackText");
 
     const submitBlock = document.createElement("button");
-    submitBlock.innerText = "입력";
+    submitBlock.innerText = "추가";
     submitBlock.addEventListener("click", addBlock);
+
+    const checkRestText = document.createElement("label");
+    checkRestText.for = "rest";
+    checkRestText.innerText = "휴식";
+    const checkRest = document.createElement("input");
+    checkRest.value = "rest";
+    checkRest.type = "checkbox";
+    checkRest.addEventListener("change", addRestText);
 
     trackForm.appendChild(startTime);
     trackForm.appendChild(endTime);
     trackForm.appendChild(trackText);
     trackForm.appendChild(submitBlock);
+    trackForm.appendChild(checkRestText);
+    trackForm.appendChild(checkRest);
     
     block.appendChild(trackForm);
     trackDiv.appendChild(block);
+}
+
+function addRestText(e) {
+    e.preventDefault();
+    const trackText = e.target.parentNode.querySelector(".trackText");
+    if (e.target.checked === true) {
+        trackText.value = "휴식";
+    }
+    else {
+        trackText.value = "";
+    }
 }
 
 function initEndTime(startTime, endTime) {
