@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Time Tracker</title>
 </head>
 <body>
@@ -12,8 +13,12 @@
         <button>Start!</button>
     </form>
 
-    <div id="track">
-        <p>Time Tracker</p>
+    <h1>Time Tracker</h1>
+
+    <div id="track" overflow="scroll" height=10px></div>
+
+    <div id="aggregate">
+        <button>Today's Work Track</button>
     </div>
     
     <script src='start.js'></script>

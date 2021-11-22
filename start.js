@@ -1,5 +1,6 @@
 const startBtn = document.querySelector("#start");
 const trackDiv = document.querySelector("#track");
+const statsBtn = document.querySelector("#aggregate");
 
 function addBlock(e) {
     e.preventDefault();
@@ -89,5 +90,26 @@ function initStartTime(startTime) {
     }
 }
 
+function collectTexts() {
+    const allBlocks = document.querySelectorAll(".trackText");
+    let allTexts = [];
+    for (let i = 0; i < allBlocks.length; i++) {
+        allTexts.push(allBlocks[i].value);
+    }
+    return allTexts;
+}
+
+function collectTimes() {
+    const startTimes = document.querySelectorAll(".startTime");
+    const endTimes = document.querySelectorAll(".endTime");
+
+}
+
+function aggregateTrack() {
+    aggTimes = collectTimes();
+    aggTexts = collectTexts();
+
+}
 
 startBtn.addEventListener("submit", addBlock);
+statsBtn.addEventListener("click", aggregateTrack);
