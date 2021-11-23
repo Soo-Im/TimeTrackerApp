@@ -100,14 +100,30 @@ function collectTexts() {
 }
 
 function collectTimes() {
-    const startTimes = document.querySelectorAll(".startTime");
-    const endTimes = document.querySelectorAll(".endTime");
+    const startTimeBlocks = document.querySelectorAll(".startTime");
+    const endTimeBlocks = document.querySelectorAll(".endTime");
+    
+    let startTimes = [];
+    let endTimes = [];
+
+    for (let i = 0; i < startTimeBlocks.length; i++) {
+        startTimes.push(startTimeBlocks[i].value);
+        endTimes.push(endTimeBlocks[i].value);
+    }
+
+    // const diffTimes = endTimes - startTimes;
+    // const hh = Math.floor(diffTimes / 1000 / 60 / 60);
+    // diffTimes -= hh * 1000 * 60 * 60;
+    // const mm = Math.floor(diffTimes / 1000 / 60);
 
 }
 
 function aggregateTrack() {
     aggTimes = collectTimes();
     aggTexts = collectTexts();
+
+    console.log(aggTimes);
+    console.log(aggTexts);
 
 }
 
