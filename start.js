@@ -90,16 +90,17 @@ function initStartTime(startTime) {
     }
 }
 
-function collectTexts() {
-    const allBlocks = document.querySelectorAll(".trackText");
+function collectBlocks() {
+    const textBlocks = document.querySelectorAll(".trackText");
+
     let allTexts = [];
-    for (let i = 0; i < allBlocks.length; i++) {
-        allTexts.push(allBlocks[i].value);
+    for (let i = 0; i < textBlocks.length; i++) {
+        allTexts.push(textBlocks[i].value);
     }
     return allTexts;
 }
 
-function collectTimes() {
+function getIntervals() {
     const startTimeBlocks = document.querySelectorAll(".startTime");
     const endTimeBlocks = document.querySelectorAll(".endTime");
     
@@ -110,6 +111,17 @@ function collectTimes() {
         startTimes.push(startTimeBlocks[i].value);
         endTimes.push(endTimeBlocks[i].value);
     }
+
+    start = start.split(":");
+    end = end.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+
+    return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
 
     // const diffTimes = endTimes - startTimes;
     // const hh = Math.floor(diffTimes / 1000 / 60 / 60);
