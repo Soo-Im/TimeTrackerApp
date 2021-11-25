@@ -112,8 +112,8 @@ function getIntervals() {
         endTimes.push(endTimeBlocks[i].value);
     }
 
-    start = start.split(":");
-    end = end.split(":");
+    startTimes = startTimes.split(":");
+    endTimes = endTimes.split(":");
     var startDate = new Date(0, 0, 0, start[0], start[1], 0);
     var endDate = new Date(0, 0, 0, end[0], end[1], 0);
     var diff = endDate.getTime() - startDate.getTime();
