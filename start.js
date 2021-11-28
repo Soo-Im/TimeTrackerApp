@@ -112,9 +112,20 @@ function getIntervals() {
         endTimes.push(endTimeBlocks[i].value);
     }
 
-    startTimes.map(function(start, i)
+    startTimes.map(function(val, i)
     {
-        
+        let startSplit = val.split(":");
+        let endSplit = endTimes[i].split(":");
+
+        let startDate = new Date(0, 0, 0, startSplit[0],startSplit[1], 0);
+        let endDate = new Date(0, 0, 0, endSplit[0],endSplit[1], 0);
+        let diffDate = endDate.getTime() - startDate.getTime();
+
+        let diffHours = Math.floor(diffDate / 1000 / 60 / 60);
+        diffDate -= diffHours * 1000 * 60 * 60;
+        let diffMins = Math.floor(diffDate / 1000 / 60);
+
+        return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
     });
 
     // startTimes = startTimes.split(":");
