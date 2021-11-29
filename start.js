@@ -90,29 +90,23 @@ function initStartTime(startTime) {
     }
 }
 
-function collectBlocks() {
+
+function getTrackObj() {
     const textBlocks = document.querySelectorAll(".trackText");
-
-    let allTexts = [];
-    for (let i = 0; i < textBlocks.length; i++) {
-        allTexts.push(textBlocks[i].value);
-    }
-    return allTexts;
-}
-
-function getIntervals() {
     const startTimeBlocks = document.querySelectorAll(".startTime");
     const endTimeBlocks = document.querySelectorAll(".endTime");
     
+    let texts = [];
     let startTimes = [];
     let endTimes = [];
 
-    for (let i = 0; i < startTimeBlocks.length; i++) {
+    for (let i = 0; i < textBlocks.length; i++) {
+        texts.push(textBlocks[i].value);
         startTimes.push(startTimeBlocks[i].value);
         endTimes.push(endTimeBlocks[i].value);
     }
 
-    startTimes.map(function(val, i)
+    const intervals = startTimes.map(function(val, i)
     {
         let startSplit = val.split(":");
         let endSplit = endTimes[i].split(":");
@@ -128,21 +122,8 @@ function getIntervals() {
         return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
     });
 
-    // startTimes = startTimes.split(":");
-    // endTimes = endTimes.split(":");
-    // var startDate = new Date(0, 0, 0, start[0], start[1], 0);
-    // var endDate = new Date(0, 0, 0, end[0], end[1], 0);
-    // var diff = endDate.getTime() - startDate.getTime();
-    // var hours = Math.floor(diff / 1000 / 60 / 60);
-    // diff -= hours * 1000 * 60 * 60;
-    // var minutes = Math.floor(diff / 1000 / 60);
-
-    // return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
-
-    // const diffTimes = endTimes - startTimes;
-    // const hh = Math.floor(diffTimes / 1000 / 60 / 60);
-    // diffTimes -= hh * 1000 * 60 * 60;
-    // const mm = Math.floor(diffTimes / 1000 / 60);
+    const trackArr = new Map(texts, intervals);
+    const trackObj = Object.fromEntries(trackArr);
 
 }
 
