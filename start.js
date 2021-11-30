@@ -90,7 +90,6 @@ function initStartTime(startTime) {
     }
 }
 
-
 function getTrackObj() {
     const textBlocks = document.querySelectorAll(".trackText");
     const startTimeBlocks = document.querySelectorAll(".startTime");
@@ -122,19 +121,25 @@ function getTrackObj() {
         return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
     });
 
-    const trackArr = new Map(texts, intervals);
-    const trackObj = Object.fromEntries(trackArr);
+    let trackArr = [];
+    texts.forEach(function(v,i){
+        let trackObj = {};
+        trackObj.text = v;
+        trackObj.time = intervals[i];
+        trackArr.push(trackObj);
+    });
 
+    return trackArr;
 }
 
 
 function aggregateTrack() {
-    aggTimes = collectTimes();
-    aggTexts = collectTexts();
+    trackArr = getTrackObj();
+    console.log(trackArr);
 
-    console.log(aggTimes);
-    console.log(aggTexts);
-
+    const aggr = _
+    .chain(trackArr)
+    .groupBy('text')
 }
 
 startBtn.addEventListener("submit", addBlock);
