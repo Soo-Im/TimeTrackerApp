@@ -136,10 +136,18 @@ function getTrackObj() {
 function aggregateTrack() {
     trackArr = getTrackObj();
     console.log(trackArr);
+}
 
-    const aggr = _
-    .chain(trackArr)
-    .groupBy('text')
+function groupBy(objectArr, groupProperty, aggProperty){
+    return objectArr.reduce(function(accum, currentObj){
+        let text = currentObj[groupProperty];
+        if (!accum['text']===text) {
+            accum['time'] = currentObj.aggProperty;
+        }
+        else {
+            accum['time'] += currentObj.aggProperty;
+        }
+    }, {});
 }
 
 startBtn.addEventListener("submit", addBlock);
