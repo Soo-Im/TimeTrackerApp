@@ -118,11 +118,12 @@ function getTrackObj() {
         diffDate -= diffHours * 1000 * 60 * 60;
         let diffMins = Math.floor(diffDate / 1000 / 60);
 
-        return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
+        // return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
+        return diffDate;
     });
 
     let trackArr = [];
-    texts.forEach(function(v,i){
+    texts.forEach(function(v,i) {
         let trackObj = {};
         trackObj.text = v;
         trackObj.time = intervals[i];
@@ -136,18 +137,50 @@ function getTrackObj() {
 function aggregateTrack() {
     trackArr = getTrackObj();
     console.log(trackArr);
+
+    console.log(sumUp(trackArr, 'time', 'text'));
+    let aggArr = sumUp(trackArr, 'time', 'text')
+    console.log(secondsToHours(aggArr));
 }
 
-function groupBy(objectArr, groupProperty, aggProperty){
-    return objectArr.reduce(function(accum, currentObj){
-        let text = currentObj[groupProperty];
-        if (!accum['text']===text) {
-            accum['time'] = currentObj.aggProperty;
+// function groupBy(objectArr, groupProperty, aggProperty) {
+    
+//     return objectArr.reduce(function(accum, currentObj) {
+//         let track = currentObj[groupProperty];
+//         if (typeof (currentObj.find(element => element.text == track)) == 'undefined' ) {
+//             accum['time'] = currentObj.aggProperty;
+//         }
+//         else {
+//             accum['time'] += currentObj.aggProperty;
+//         }
+//     }, {});
+// }
+
+function sumUp(obj, propName, groupPropName, totals) {
+    var totals = totals || {};
+    for (var prop in obj) {
+        if (prop === propName) {
+            if (!totals[obj[groupPropName]]) {
+                totals[obj[groupPropName]] = 0
+            } 
+            totals[obj[groupPropName]] += obj[propName]
+        } else if (typeof obj[prop] == 'object'){
+            sumUp(obj[prop], propName, groupPropName, totals);
         }
-        else {
-            accum['time'] += currentObj.aggProperty;
-        }
-    }, {});
+    }
+    return totals;
+}
+
+function secondsToHours(obj) {
+    for (let [text, diffDate] of Object.entries(obj)) {
+        let diffHours = Math.floor(diffDate / 1000 / 60 / 60);
+        diffDate -= diffHours * 1000 * 60 * 60;
+        let diffMins = Math.floor(diffDate / 1000 / 60);
+
+        diffDate = (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
+    }
+
+    return obj;
 }
 
 startBtn.addEventListener("submit", addBlock);
