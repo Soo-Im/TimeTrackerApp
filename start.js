@@ -1,6 +1,8 @@
 const startBtn = document.querySelector("#start");
 const trackDiv = document.querySelector("#track");
-const statsBtn = document.querySelector("#aggregate");
+const statsBtn = document.querySelector("#aggregate button");
+const statsList = document.querySelector("#aggregate ul");
+
 
 function addBlock(e) {
     e.preventDefault();
@@ -114,11 +116,6 @@ function getTrackObj() {
         let endDate = new Date(0, 0, 0, endSplit[0],endSplit[1], 0);
         let diffDate = endDate.getTime() - startDate.getTime();
 
-        let diffHours = Math.floor(diffDate / 1000 / 60 / 60);
-        diffDate -= diffHours * 1000 * 60 * 60;
-        let diffMins = Math.floor(diffDate / 1000 / 60);
-
-        // return (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
         return diffDate;
     });
 
@@ -136,29 +133,15 @@ function getTrackObj() {
 
 function aggregateTrack() {
     trackArr = getTrackObj();
-    console.log(trackArr);
-
-    console.log(sumUp(trackArr, 'time', 'text'));
-    let aggArr = sumUp(trackArr, 'time', 'text')
-    console.log(secondsToHours(aggArr));
-}
-
-// function groupBy(objectArr, groupProperty, aggProperty) {
+    let aggObj = sumUp(trackArr, 'time', 'text')
     
-//     return objectArr.reduce(function(accum, currentObj) {
-//         let track = currentObj[groupProperty];
-//         if (typeof (currentObj.find(element => element.text == track)) == 'undefined' ) {
-//             accum['time'] = currentObj.aggProperty;
-//         }
-//         else {
-//             accum['time'] += currentObj.aggProperty;
-//         }
-//     }, {});
-// }
+    statsList.replaceChildren();
+    writeTrack(aggObj);
+}
 
 function sumUp(obj, propName, groupPropName, totals) {
     var totals = totals || {};
-    for (var prop in obj) {
+    for (const prop in obj) {
         if (prop === propName) {
             if (!totals[obj[groupPropName]]) {
                 totals[obj[groupPropName]] = 0
@@ -171,16 +154,26 @@ function sumUp(obj, propName, groupPropName, totals) {
     return totals;
 }
 
-function secondsToHours(obj) {
-    for (let [text, diffDate] of Object.entries(obj)) {
-        let diffHours = Math.floor(diffDate / 1000 / 60 / 60);
-        diffDate -= diffHours * 1000 * 60 * 60;
-        let diffMins = Math.floor(diffDate / 1000 / 60);
 
-        diffDate = (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
+
+function writeTrack(obj) {
+    for (const prop in obj) {
+        const track = document.createElement("li");
+        const diffTime = datesToText(obj[prop]);
+        track.innerText = `${prop}  ${diffTime}`;
+
+        statsList.appendChild(track);
     }
+}
 
-    return obj;
+function datesToText(diffDate) {
+    let diffHours = Math.floor(diffDate / 1000 / 60 / 60);
+    diffDate -= diffHours * 1000 * 60 * 60;
+    let diffMins = Math.floor(diffDate / 1000 / 60);
+
+    const diffText = (diffHours < 9 ? "0" : "") + diffHours + ":" + (diffMins < 9 ? "0" : "") + diffMins;
+
+    return diffText;
 }
 
 startBtn.addEventListener("submit", addBlock);
