@@ -3,6 +3,13 @@ const trackDiv = document.querySelector("#track");
 const statsBtn = document.querySelector("#aggregate button");
 const statsList = document.querySelector("#aggregate ul");
 
+Object.prototype.insertAfter = function (newNode) {     
+    if (!!this.nextSibling) {
+      this.parentElement.insertBefore(newNode, this.nextSibling);
+    } else {
+      this.parentElement.appendChild(newNode);
+    }
+  };
 
 function addBlock(e) {
     e.preventDefault();
@@ -46,9 +53,16 @@ function addBlock(e) {
     trackForm.appendChild(submitBlock);
     trackForm.appendChild(checkRestText);
     trackForm.appendChild(checkRest);
-    
     block.appendChild(trackForm);
-    trackDiv.appendChild(block);
+
+    const allBlocks = document.querySelectorAll(".block");
+    if (allBlocks.length === 0) {
+        trackDiv.appendChild(block);
+    }
+    else {
+        e.target.parentElement.insertAfter(block);
+    } 
+    
 }
 
 function addRestText(e) {
@@ -153,8 +167,6 @@ function sumUp(obj, propName, groupPropName, totals) {
     }
     return totals;
 }
-
-
 
 function writeTrack(obj) {
     for (const prop in obj) {
