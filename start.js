@@ -101,7 +101,8 @@ function initStartTime(startTime) {
         startTime.value = startBtn.firstElementChild.value;
     }
     else {
-        const latestTime = allBlocks[allBlocks.length-1].querySelector(".endTime").value;
+        // const latestTime = allBlocks[allBlocks.length-1].querySelector(".endTime").value;
+        const lastestTime = this.previousSibling.value;
         startTime.value = latestTime;
     }
 }
