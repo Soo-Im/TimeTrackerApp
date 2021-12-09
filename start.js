@@ -1,7 +1,8 @@
 const startBtn = document.querySelector("#start");
 const trackDiv = document.querySelector("#track");
 const statsBtn = document.querySelector("#aggregate button");
-const statsList = document.querySelector("#aggregate ul");
+let statsList = document.querySelector("#aggregate ul");
+let resultDiv = document.querySelector("#result")
 
 Object.prototype.insertAfter = function (newNode) {     
     if (!!this.nextSibling) {
@@ -28,7 +29,7 @@ function addBlock(e) {
     startTime.classList.add("startTime");
     endTime.classList.add("endTime");
 
-    initStartTime(startTime);
+    initStartTime(e, startTime);
     initEndTime(startTime, endTime);
 
     const trackText = document.createElement("input");
@@ -95,14 +96,13 @@ function initEndTime(startTime, endTime) {
     endTime.value = `${hours}:${minutes}`;
 }
 
-function initStartTime(startTime) {
+function initStartTime(e, startTime) {
     const allBlocks = document.querySelectorAll(".block");
     if (allBlocks.length === 0) {
         startTime.value = startBtn.firstElementChild.value;
     }
     else {
-        // const latestTime = allBlocks[allBlocks.length-1].querySelector(".endTime").value;
-        const lastestTime = this.previousSibling.value;
+        const latestTime = e.target.previousSibling.previousSibling.value;
         startTime.value = latestTime;
     }
 }
@@ -148,8 +148,9 @@ function getTrackObj() {
 
 function aggregateTrack() {
     trackArr = getTrackObj();
-    let aggObj = sumUp(trackArr, 'time', 'text')
-    
+    let aggObj = sumUp(trackArr, 'time', 'text');
+
+
     statsList.replaceChildren();
     writeTrack(aggObj);
 }
@@ -171,12 +172,20 @@ function sumUp(obj, propName, groupPropName, totals) {
 
 function writeTrack(obj) {
     for (const prop in obj) {
-        const track = document.createElement("li");
+        let totalTime = 0;
+        let track = document.createElement("li");
         const diffTime = datesToText(obj[prop]);
         track.innerText = `${prop}  ${diffTime}`;
 
         statsList.appendChild(track);
+        
+        totalTime += obj[prop];
+        let total = document.createElement("p");
+        total.innerText = `${totalTime}`;
+        resultDiv.appendChild(total);
     }
+    statsList.removeChild(statsList.lastChild);
+
 }
 
 function datesToText(diffDate) {
@@ -188,6 +197,12 @@ function datesToText(diffDate) {
 
     return diffText;
 }
+
+// function writeResult(obj) {
+//     for (const prop in obj) {
+
+//     } 
+// }
 
 startBtn.addEventListener("submit", addBlock);
 statsBtn.addEventListener("click", aggregateTrack);
