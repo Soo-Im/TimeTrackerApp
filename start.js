@@ -170,10 +170,11 @@ function sumUp(obj, propName, groupPropName, totals) {
 
 function writeTrack(obj) {
     for (const prop in obj) {
-        const track = document.createElement("li");
-        const diffTime = datesToText(obj[prop]);
-        track.innerText = `${prop}  ${diffTime}`;
-
+        if (obj.hasOwnProperty(prop)) {
+            const track = document.createElement("li");
+            const diffTime = datesToText(obj[prop]);
+            track.innerText = `${prop}  ${diffTime}`;
+        }
         statsList.appendChild(track);
     }
 }
