@@ -28,7 +28,7 @@ function addBlock(e) {
     startTime.classList.add("startTime");
     endTime.classList.add("endTime");
 
-    initStartTime(startTime);
+    initStartTime(e, startTime);
     initEndTime(startTime, endTime);
 
     const trackText = document.createElement("input");
@@ -95,13 +95,13 @@ function initEndTime(startTime, endTime) {
     endTime.value = `${hours}:${minutes}`;
 }
 
-function initStartTime(startTime) {
+function initStartTime(e, startTime) {
     const allBlocks = document.querySelectorAll(".block");
     if (allBlocks.length === 0) {
         startTime.value = startBtn.firstElementChild.value;
     }
     else {
-        const latestTime = allBlocks[allBlocks.length-1].querySelector(".endTime").value;
+        const latestTime = e.target.parentElement.querySelector(".endTime").value;
         startTime.value = latestTime;
     }
 }
@@ -156,13 +156,15 @@ function aggregateTrack() {
 function sumUp(obj, propName, groupPropName, totals) {
     var totals = totals || {};
     for (const prop in obj) {
-        if (prop === propName) {
-            if (!totals[obj[groupPropName]]) {
-                totals[obj[groupPropName]] = 0
-            } 
-            totals[obj[groupPropName]] += obj[propName]
-        } else if (typeof obj[prop] == 'object'){
-            sumUp(obj[prop], propName, groupPropName, totals);
+        if (obj.hasOwnProperty(prop)){
+            if (prop === propName) {
+                if (!totals[obj[groupPropName]]) {
+                    totals[obj[groupPropName]] = 0
+                } 
+                totals[obj[groupPropName]] += obj[propName]
+            } else if (typeof obj[prop] == 'object'){
+                sumUp(obj[prop], propName, groupPropName, totals);
+            }
         }
     }
     return totals;
@@ -174,8 +176,10 @@ function writeTrack(obj) {
             const track = document.createElement("li");
             const diffTime = datesToText(obj[prop]);
             track.innerText = `${prop}  ${diffTime}`;
+
+            statsList.appendChild(track);
         }
-        statsList.appendChild(track);
+        
     }
 }
 
