@@ -2,6 +2,8 @@ const startBtn = document.querySelector("#start");
 const trackDiv = document.querySelector("#track");
 const statsBtn = document.querySelector("#aggregate button");
 const statsList = document.querySelector("#aggregate ul");
+const resultDiv = document.querySelector("#result");
+
 
 Object.prototype.insertAfter = function (newNode) {     
     if (!!this.nextSibling) {
@@ -150,6 +152,7 @@ function aggregateTrack() {
     let aggObj = sumUp(trackArr, 'time', 'text')
     
     statsList.replaceChildren();
+    resultDiv.replaceChildren();
     writeTrack(aggObj);
 }
 
@@ -171,16 +174,22 @@ function sumUp(obj, propName, groupPropName, totals) {
 }
 
 function writeTrack(obj) {
+    let totalTime = 0;
     for (const prop in obj) {
         if (obj.hasOwnProperty(prop)) {
             const track = document.createElement("li");
             const diffTime = datesToText(obj[prop]);
             track.innerText = `${prop}  ${diffTime}`;
-
             statsList.appendChild(track);
-        }
-        
+            
+            totalTime += obj[prop];
+        }    
     }
+
+    const totalTimeText = document.createElement("p");
+    totalTimeText.innerText = `${totalTime}`;
+    resultDiv.appendChild(totalTimeText);
+
 }
 
 function datesToText(diffDate) {
