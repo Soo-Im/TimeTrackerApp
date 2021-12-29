@@ -2,7 +2,7 @@ const startBtn = document.querySelector("#start");
 const trackDiv = document.querySelector("#track");
 const statsBtn = document.querySelector("#aggregate button");
 const statsList = document.querySelector("#aggregate ul");
-const resultDiv = document.querySelector("#result");
+const totalDiv = document.querySelector("#total");
 
 
 Object.prototype.insertAfter = function (newNode) {     
@@ -37,9 +37,13 @@ function addBlock(e) {
     trackText.type = "text";    
     trackText.classList.add("trackText");
 
-    const submitBlock = document.createElement("button");
-    submitBlock.innerText = "추가";
-    submitBlock.addEventListener("click", addBlock);
+    const submitBtn = document.createElement("button");
+    submitBtn.innerText = "추가";
+    submitBtn.addEventListener("click", addBlock);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "삭제";
+    deleteBtn.addEventListener("click", deleteBlock);
 
     const checkRestText = document.createElement("label");
     checkRestText.for = "rest";
@@ -52,7 +56,8 @@ function addBlock(e) {
     trackForm.appendChild(startTime);
     trackForm.appendChild(endTime);
     trackForm.appendChild(trackText);
-    trackForm.appendChild(submitBlock);
+    trackForm.appendChild(submitBtn);
+    trackForm.appendChild(deleteBtn);
     trackForm.appendChild(checkRestText);
     trackForm.appendChild(checkRest);
     block.appendChild(trackForm);
@@ -60,11 +65,23 @@ function addBlock(e) {
     const allBlocks = document.querySelectorAll(".block");
     if (allBlocks.length === 0) {
         trackDiv.appendChild(block);
+        startBtn.classList.add("hidden");
+        
     }
     else {
         e.target.parentElement.insertAfter(block);
     } 
     
+}
+
+function deleteBlock(e) {
+    e.target.parentElement.parentElement.remove();
+
+    const allBlocks = document.querySelectorAll(".block");
+    if (allBlocks.length === 0) {
+        console.log(startBtn)
+        startBtn.classList.remove("hidden");
+    }
 }
 
 function addRestText(e) {
@@ -152,7 +169,7 @@ function aggregateTrack() {
     let aggObj = sumUp(trackArr, 'time', 'text')
     
     statsList.replaceChildren();
-    resultDiv.replaceChildren();
+    totalDiv.replaceChildren();
     writeTrack(aggObj);
 }
 
@@ -187,8 +204,8 @@ function writeTrack(obj) {
     }
 
     const totalTimeText = document.createElement("p");
-    totalTimeText.innerText = `${totalTime}`;
-    resultDiv.appendChild(totalTimeText);
+    totalTimeText.innerText = `${datesToText(totalTime)}`;
+    totalDiv.appendChild(totalTimeText);
 
 }
 
