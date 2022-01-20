@@ -69,7 +69,7 @@ function addBlock(e) {
         
     }
     else {
-        e.target.parentElement.insertAfter(block);
+        e.target.parentElement.parentElement.insertAfter(block);
     } 
     
 }
