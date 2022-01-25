@@ -18,6 +18,7 @@ function addBlock(e) {
 
     const block = document.createElement("div");
     block.classList.add("block");
+
     const trackForm = document.createElement("form");
 
     const startTime = document.createElement("input");

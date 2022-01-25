@@ -1,7 +1,58 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.title {
+        font-family: 'yg-jalnan';
+}
+
+.tooltip {
+    margin-top: 40px; 
+    margin-left: 20px;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    transition:visibility 0.2s linear,opacity 0.2s linear;
+
+    /* width: 120px; */
+    background-color: rgb(44, 44, 44);
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 4px 4px 4px 4px;
+    margin: 0 2px;
+  
+    /* Position the tooltip */
+    /* position: absolute;
+    z-index: 1; */
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition:visibility 0.2s linear,opacity 0.2s linear;
+  }
+
+
 #track {
     height: 400px;
     background-color: moccasin;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .result-container {
@@ -14,8 +65,11 @@
     transition: all 0.2s ease-in-out;
 }
 
+
 .hidden {
     visibility: hidden;
+    opacity:0;
+    transition:visibility 0.2s linear,opacity 0.2s linear;
 }
 
 .startbtn, .startbtn:link, .startbtn:visited {
@@ -26,7 +80,7 @@
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 3px;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
   }
   .startbtn:hover, .startbtn:link:hover, .startbtn:visited:hover {
     background: #333;
