@@ -10,18 +10,17 @@
 <body>
     <div style="display: flex;">
         <h1 class="title">Time Tracker</h1>
-        <p class="tooltip">&#x1F6C8;
-            <span class="tooltiptext">시작 시간을 입력하고 START를 누르세요.</span>
+        <p class="titleTooltip transition">&#x1F6C8;
+            <span class="tooltiptext transition">시작 시간을 입력하고 START를 누르세요.</span>
         </p>
     </div>
 
-    <form id="start" class="transition">
+    <form id="start" class="transition" style="margin-bottom: 30px;">
         <input type="time" step="900" value="08:30" required > 
         <button class="startbtn">Start!</button>
     </form>
 
     <div id="track" height=10px>
-
     </div>
 
     <div class="result-container">

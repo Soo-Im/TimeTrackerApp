@@ -1,4 +1,5 @@
 const startBtn = document.querySelector("#start");
+const titleTooltip = document.querySelector(".titleTooltip")
 const trackDiv = document.querySelector("#track");
 const statsBtn = document.querySelector("#aggregate button");
 const statsList = document.querySelector("#aggregate ul");
@@ -40,10 +41,12 @@ function addBlock(e) {
 
     const submitBtn = document.createElement("button");
     submitBtn.innerText = "추가";
+    submitBtn.classList.add("submitBtn");
     submitBtn.addEventListener("click", addBlock);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "삭제";
+    deleteBtn.classList.add("deleteBtn");
     deleteBtn.addEventListener("click", deleteBlock);
 
     const checkRestText = document.createElement("label");
@@ -67,7 +70,7 @@ function addBlock(e) {
     if (allBlocks.length === 0) {
         trackDiv.appendChild(block);
         startBtn.classList.add("hidden");
-        
+        titleTooltip.classList.add("hidden");
     }
     else {
         e.target.parentElement.parentElement.insertAfter(block);
@@ -82,6 +85,7 @@ function deleteBlock(e) {
     if (allBlocks.length === 0) {
         console.log(startBtn)
         startBtn.classList.remove("hidden");
+        titleTooltip.classList.remove("hidden");
     }
 }
 

@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 @font-face {
     font-family: 'yg-jalnan';
@@ -7,27 +6,25 @@
     font-style: normal;
 }
 
-
 body {
     font-family: 'Noto Sans KR', sans-serif;
+    /* background-color: moccasin; */
 }
 
 .title {
         font-family: 'yg-jalnan';
 }
 
-.tooltip {
+.titleTooltip {
     margin-top: 40px; 
     margin-left: 20px;
     display: inline-block;
   }
   
-  .tooltip .tooltiptext {
+  .titleTooltip .tooltiptext {
     visibility: hidden;
     opacity: 0;
-    transition:visibility 0.2s linear,opacity 0.2s linear;
 
-    /* width: 120px; */
     background-color: rgb(44, 44, 44);
     color: #fff;
     font-size: 15px;
@@ -35,13 +32,9 @@ body {
     border-radius: 2px;
     padding: 4px 4px 4px 4px;
     margin: 0 2px;
-  
-    /* Position the tooltip */
-    /* position: absolute;
-    z-index: 1; */
   }
   
-  .tooltip:hover .tooltiptext {
+  .titleTooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
     transition:visibility 0.2s linear,opacity 0.2s linear;
@@ -50,9 +43,31 @@ body {
 
 #track {
     height: 400px;
-    background-color: moccasin;
+    width: 800px;
+    /* background-color: moccasin; */
     overflow-y: scroll;
     overflow-x: hidden;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: inset -50px -50px 50px rgba(255, 255, 255, 0.2),
+                inset 50px 50px 50px rgba(0,0,0,0.1);
+}
+
+#track::-webkit-scrollbar {
+  width: 20px;
+}
+
+#track::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+#track::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 6px solid rgba(0, 0, 0, 0.18);
+  border-left: 0;
+  border-right: 0;
+  background-color: #b1a8df;
 }
 
 .result-container {
@@ -88,3 +103,21 @@ body {
     color: #fefefe;
     /* border-radius: 30px; */
   }
+
+.block {
+    margin: 15px 20px 5px;
+  }
+
+.endTime, .trackText, .submitBtn, .deleteBtn {
+    margin: 0 5px 0 5px;
+  }
+
+.trackText {
+  background: transparent;
+  width: 250px;
+  border-width: 0 0 2px;
+  border-color: dimgray;
+  font-size: 15px;
+  height: 25px;
+  outline: none !important;
+}
