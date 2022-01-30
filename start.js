@@ -1,6 +1,7 @@
 const startBtn = document.querySelector("#start");
 const titleTooltip = document.querySelector(".titleTooltip")
 const trackDiv = document.querySelector("#track");
+const resultContainer = document.querySelector(".result-container");
 const statsBtn = document.querySelector("#aggregate button");
 const statsList = document.querySelector("#aggregate ul");
 const totalDiv = document.querySelector("#total");
@@ -71,6 +72,7 @@ function addBlock(e) {
         trackDiv.appendChild(block);
         startBtn.classList.add("hidden");
         titleTooltip.classList.add("hidden");
+        resultContainer.classList.remove("hidden");
     }
     else {
         e.target.parentElement.parentElement.insertAfter(block);
@@ -86,6 +88,9 @@ function deleteBlock(e) {
         console.log(startBtn)
         startBtn.classList.remove("hidden");
         titleTooltip.classList.remove("hidden");
+        resultContainer.classList.add("hidden");
+        statsList.replaceChildren();
+        totalDiv.replaceChildren();
     }
 }
 

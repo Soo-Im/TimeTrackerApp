@@ -44,13 +44,13 @@ body {
 
 #track {
     height: 400px;
-    width: 800px;
+    width: 820px;
     /* background-color: moccasin; */
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px;
     position: relative;
-    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(119, 57, 57, 0.23);
     -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -95,6 +95,7 @@ body {
 }
 
 .startbtn, .startbtn:link, .startbtn:visited {
+    margin: 10px;
     padding: 13px 5px;
     border: 1px solid #333;
     color: #333;
@@ -102,6 +103,7 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 3px;
+    background-color: rgb(203, 221, 255);
     /* transition: all 0.2s ease-in-out; */
   }
   .startbtn:hover, .startbtn:link:hover, .startbtn:visited:hover {
@@ -127,4 +129,25 @@ body {
   font-size: 15px;
   height: 25px;
   outline: none !important;
+}
+
+#aggregate button {
+  padding: 8px 10px 8px 10px;
+  margin: 5px;
+  letter-spacing: 4px;
+  color: 
+}
+
+#aggregate li {
+  list-style: none;
+}
+
+#aggregate li::before {
+  content: "✔ ";
+  margin-right: 5px;
+}
+
+#total {
+  margin-top: 30px;
+  
 }
