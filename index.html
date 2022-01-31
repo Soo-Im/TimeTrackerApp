@@ -17,15 +17,22 @@
 
     <form id="start" class="transition" style="margin-bottom: 30px;">
         <input type="time" step="900" value="08:30" required > 
-        <button class="startbtn">Start!</button>
+        <button class="button">Start!</button>
     </form>
 
     <div id="track">
+        <div class="description">
+            <div class="start">시작 시각</div>
+            <div class="end">종료 시각</div>
+            <div class="text">기록</div>
+            <div class="handle">블록 추가/삭제</div>
+            <div class="rest">휴식 입력</div>
+        </div>
     </div>
 
     <div class="result-container hidden transition">
         <div id="aggregate">
-            <button>Your Track</button>
+            <button class="button">Your Track</button>
             <ul>
             </ul>
         </div>

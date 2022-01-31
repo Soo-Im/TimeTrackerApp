@@ -94,7 +94,7 @@ body {
     transition:visibility 0.2s linear,opacity 0.2s linear;
 }
 
-.startbtn, .startbtn:link, .startbtn:visited {
+.button, .button:link, .button:visited {
     margin: 10px;
     padding: 13px 5px;
     border: 1px solid #333;
@@ -106,7 +106,7 @@ body {
     background-color: rgb(203, 221, 255);
     /* transition: all 0.2s ease-in-out; */
   }
-  .startbtn:hover, .startbtn:link:hover, .startbtn:visited:hover {
+  .button:hover, .button:link:hover, .button:visited:hover {
     background: #333;
     border: 1px solid #333;
     color: #fefefe;
@@ -115,11 +115,22 @@ body {
 
 .block {
     margin: 15px 20px 5px;
+    /* display: grid;
+    grid-template-columns: 100px 100px 200px 200px 100px; */
   }
 
 .endTime, .trackText, .submitBtn, .deleteBtn {
     margin: 0 5px 0 5px;
   }
+
+.description {
+  display: grid;
+  grid-template-columns: 100px 100px 200px 200px 100px;
+}
+
+.description.start {
+  margin-left: 30px;
+}
 
 .trackText {
   background: transparent;
@@ -131,11 +142,11 @@ body {
   outline: none !important;
 }
 
-#aggregate button {
+/* #aggregate button {
   padding: 8px 10px 8px 10px;
   margin: 5px;
   letter-spacing: 4px;
-}
+} */
 
 #aggregate li {
   list-style: none;
