@@ -214,7 +214,7 @@ function writeTrack(obj) {
     }
 
     const totalTimeText = document.createElement("p");
-    totalTimeText.innerText = `${datesToText(totalTime)}`;
+    totalTimeText.innerText = `총 ${datesToText(totalTime)} 기록했습니다!`;
     totalDiv.appendChild(totalTimeText);
 
 }
