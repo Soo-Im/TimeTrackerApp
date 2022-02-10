@@ -9,7 +9,6 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     margin-left: 30px;
-    /* background-color: moccasin; */
 }
 
 .title {
@@ -38,14 +37,12 @@ body {
   .titleTooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-    transition:visibility 0.2s linear,opacity 0.2s linear;
   }
 
 
 #track {
     height: 400px;
     width: 820px;
-    /* background-color: moccasin; */
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px;
@@ -62,10 +59,6 @@ body {
   width: 20px;
 }
 
-/* #track::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 100px;
-} */
 
 #track::-webkit-scrollbar-thumb {
   border-radius: 100px;
@@ -86,29 +79,6 @@ body {
 .transition {
     transition: all 0.2s ease-in-out;
 }
-
-/* .submitBtn, .deleteBtn {
-  background-color: rgba(51, 51, 51, 0.05);
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 0 5px 0 5px;
-  padding: 10px 12px;
-  text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-} */
 
 .submitBtn, .deleteBtn {
   background-color: #f8f9fa;
@@ -136,16 +106,10 @@ body {
   color: #202124;
 }
 
-/* .submitBtn:focus, .deleteBtn:focus {
-  border-color: #4285f4;
-  outline: none;
-} */
-
-
 .hidden {
     visibility: hidden;
     opacity:0;
-    transition:visibility 0.2s linear,opacity 0.2s linear;
+    transition: all 0.2s ease-in-out;
 }
 
 .button, .button:link, .button:visited {
@@ -163,13 +127,10 @@ body {
     background: #333;
     border: 1px solid #333;
     color: #fefefe;
-    /* border-radius: 30px; */
   }
 
 .block {
     margin: 15px 20px 5px;
-    /* display: grid;
-    grid-template-columns: 100px 100px 200px 200px 100px; */
   }
 
 .endTime, .trackText {
@@ -228,7 +189,7 @@ body {
 }
 
 #aggregate li::before {
-  content: "✔ ";
+  content: "✔  ";
   margin-right: 5px;
 }
 
