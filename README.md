@@ -2,7 +2,7 @@
 
 ## 소개
 시간별로 무엇을 했는지 기록하고 집계할 수 있는 페이지입니다.
-![use-example](https://user-images.githubusercontent.com/40853572/153446832-d54e3f4e-b715-4588-bf60-1a1566b59925.png)
+![use-example](https://user-images.githubusercontent.com/40853572/153446832-d54e3f4e-b715-4588-bf60-1a1566b59925.png) { width: 400px; }
 
 
 ## 동기
