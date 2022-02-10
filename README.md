@@ -2,7 +2,8 @@
 
 ## 소개
 시간별로 무엇을 했는지 기록하고 집계할 수 있는 페이지입니다.
-<img src = "https://user-images.githubusercontent.com/40853572/153446832-d54e3f4e-b715-4588-bf60-1a1566b59925.png" width=400>
+
+<img src = "https://user-images.githubusercontent.com/40853572/153446832-d54e3f4e-b715-4588-bf60-1a1566b59925.png" width=700>
 
 ## 동기
 회사에서 업무 시간을 보고할 일이 있었는데 아침에는 A를 하고, 잠시 쉬었다가 B를 하고, 밥 먹고 와서 다시 A를 하고... 이런 식으로 하다보니 각 업무에 쓴 총 시간이 얼마인지 계산하는 일이 여간 귀찮은 일이 아니었습니다.
