@@ -16,8 +16,3 @@
 
 ## 사용 도구
 HTML + CSS + JavaScript
-
-## 주요 기능&함수
-### 1. 입력 블록 추가
-<img src = "https://user-images.githubusercontent.com/40853572/154849017-3b0f9980-6980-48e9-a3b8-94b7e871293a.png" width = 700>
-이 페이지에서 가장 중요한 기능을 가진 블록이다. 시작 시간+종료 시간+기록을 입력값으로 받고 해당 블록을 
